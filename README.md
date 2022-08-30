@@ -1,4 +1,4 @@
-### Hey, welcome to my profile 👋
+### Hey, welcome to my profile I'm Fai 👋
 
 <!--
 **fai-aher/fai-aher** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
