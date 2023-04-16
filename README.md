@@ -1,7 +1,7 @@
 ### Hey, welcome to my profile. I'm Fai 👋
 おはよう！ファイです。
 
-🍥How yo can reach me: ->E-mail: fai.ahertz@gmail.com, fai.ahernandez@pm.me.
+🍥You can reach me by: ->E-mail: fai.ahertz@gmail.com, fai.ahernandez@pm.me.
 
 <!--
 **fai-aher/fai-aher** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
