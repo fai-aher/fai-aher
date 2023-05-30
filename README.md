@@ -1,4 +1,6 @@
 ### Hey, welcome to my profile. I'm Fai 👋
+I am a Software and Computer Engineer student at Los Andes University in Bogotá Colombia.
+
 おはよう！ファイです。
 コロンビアのボゴタにあるロスアンデス大学のソフトウェアおよびコンピューター エンジニアの学生です。
 
