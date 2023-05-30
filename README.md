@@ -2,6 +2,7 @@
 I am a Software and Computer Engineering student at Los Andes University in Bogotá Colombia.
 
 おはよう！ファイです。
+
 コロンビアのボゴタにあるロスアンデス大学のソフトウェアおよびコンピューター エンジニアの学生です。
 
 🍥You can reach me by: ->E-mail: fai.ahertz@gmail.com, fai.ahernandez@pm.me.
