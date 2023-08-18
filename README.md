@@ -5,7 +5,8 @@ I'm a Software and Computer Engineering student at Los Andes University in Bogot
 
 コロンビアのボゴタにあるロスアンデス大学のソフトウェアおよびコンピューター エンジニアの学生です。
 
-🍥You can reach me by: ->E-mail: fai.ahertz@gmail.com, fai.ahernandez@pm.me.
+🍥You can reach me by E-mail: fai.ahertz@gmail.com, fai.ahernandez@pm.me.
+🎋LinkedIn profile: https://www.linkedin.com/in/a-hernandezt/
 
 <!--
 **fai-aher/fai-aher** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
