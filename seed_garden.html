@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The SEED Garden 2025</title>
+    <style>
+        :root {
+            --primary: #2E7D32;
+            --primary-light: #4CAF50;
+            --primary-dark: #1B5E20;
+            --secondary: #FF9800;
+            --text: #333;
+            --text-light: #555;
+            --background: #F9F9F9;
+            --card-bg: #fff;
+            --border: #e0e0e0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background);
+            color: var(--text);
+        }
+
+        #logo-img {
+            width: 200px;
+        }
+        
+        .dashboard {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        header p {
+            margin: 10px 0 0;
+            font-size: 1.2rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .header-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.2;
+            background-image: url('https://via.placeholder.com/1200x300?text=Seeds+Background');
+            background-size: cover;
+            z-index: 1;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .section h2 {
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary-light);
+            padding-bottom: 8px;
+            margin-top: 0;
+        }
+        
+        .section-intro {
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--primary);
+            transition: transform 0.2s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card h3 {
+            color: var(--primary-dark);
+            margin-top: 0;
+        }
+        
+        .card p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        
+        .growth-stages {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding: 0 20px;
+            position: relative;
+        }
+        
+        .growth-stages::before {
+            content: '';
+            position: absolute;
+            height: 4px;
+            background-color: var(--primary-light);
+            top: 50px;
+            left: 40px;
+            right: 40px;
+            z-index: 1;
+        }
+        
+        .stage {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .stage-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--card-bg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            border: 2px solid var(--primary);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .stage-name {
+            font-size: 0.8rem;
+            text-align: center;
+            color: var(--primary-dark);
+            font-weight: bold;
+        }
+        
+        .stage-points {
+            font-size: 0.7rem;
+            color: var(--text-light);
+        }
+        
+        .calendar {
+            margin-top: 20px;
+        }
+        
+        .month {
+            margin-bottom: 15px;
+        }
+        
+        .month-header {
+            background-color: var(--primary);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        
+        .events {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .event {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 8px 12px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .event-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        
+        .event-cultural .event-dot {
+            background-color: #4CAF50;
+        }
+        
+        .event-inperson .event-dot {
+            background-color: #2196F3;
+        }
+        
+        .event-virtual .event-dot {
+            background-color: #9C27B0;
+        }
+        
+        .event-mission .event-dot {
+            background-color: #FF9800;
+        }
+        
+        .rewards-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .rewards-table th, .rewards-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .rewards-table th {
+            background-color: var(--primary-light);
+            color: white;
+        }
+        
+        .rewards-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        .team-structure {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .team-member {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 150px;
+        }
+        
+        .member-avatar {
+            width: 80px;
+            height: 80px;
+            background-color: var(--primary-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .member-name {
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        .member-role {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            text-align: center;
+        }
+        
+        .budget-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .budget-card {
+            flex: 1;
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .budget-amount {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary-dark);
+            margin: 10px 0;
+        }
+        
+        .budget-description {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        
+        .legend {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            font-size: 0.8rem;
+        }
+        
+        @media (max-width: 768px) {
+            .growth-stages {
+                overflow-x: auto;
+                padding-bottom: 10px;
+            }
+            
+            .budget-container {
+                flex-direction: column;
+            }
+            
+            .team-structure {
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <header>
+            <div class="header-bg"></div>
+            <img id="logo-img" src="SEED Alumni Garden.png" alt="Logo" />
+            <h1>The SEED Garden 2025</h1>
+            <p>Global Connections Rooted in Japan and Growing Around the World </p>
+        </header>
+        
+        <div class="section">
+            <h2>About the SEED Garden</h2>
+            <div class="section-intro">
+                <p>The SEED Garden is a new and innovative approach to the SEED Alumni Project for 2025. It reimagines our community as a thriving ecosystem where each participant contributes to a beautiful, diverse, and productive network of relationships that span across countries, cohorts, and cultures.</p>
+                
+                <p>Through this initiative, we aim to foster meaningful connections between current SEED 2025 participants and alumni from previous years (2022-2024), creating a supportive community that continues to grow long after the program ends. The SEED Garden combines professional development, cultural exchange, and mutual support in a gamified structure that rewards engagement and contribution.</p>
+                
+                <p>Key objectives of the SEED Garden include:</p>
+                <ul>
+                    <li>Strengthening connections between alumni across all cohorts</li>
+                    <li>Providing mentorship opportunities for current participants</li>
+                    <li>Supporting Yamanashi producers through continued engagement</li>
+                    <li>Creating valuable networking opportunities across countries</li>
+                    <li>Maintaining and deepening everyone's connection to Japanese culture</li>
+                </ul>
+
+                <p>Join us in cultivating this unique community where everyone can grow, share knowledge, and build lasting professional relationships!</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Growth Stages</h2>
+            <div class="section-intro">
+                <p>The SEED Garden employs a gamified engagement system where each participant begins as a seed and progresses through various growth stages by earning points. This structure provides clear goals and recognition for your contributions to the community.</p>
+                
+                <p>At the Young Tree stage (400 points), you'll discover which type of tree you'll become, adding an element of excitement and personalization to your journey. As you continue to participate and contribute, your tree will blossom and reach mythical status!</p>
+            </div>
+            
+            <div class="growth-stages">
+                <div class="stage">
+                    <div class="stage-icon">🌱</div>
+                    <div class="stage-name">Seed 種</div>
+                    <div class="stage-points">0 pts</div>
+                </div>
+                
+                <div class="stage">
+                    <div class="stage-icon">🌿</div>
+                    <div class="stage-name">Sprout 芽</div>
+                    <div class="stage-points">50 pts</div>
+                </div>
+                
+                <div class="stage">
+                    <div class="stage-icon">🍃</div>
+                    <div class="stage-name">Sapling 苗</div>
+                    <div class="stage-points">250 pts</div>
+                </div>
+                
+                <div class="stage">
+                    <div class="stage-icon">🌴</div>
+                    <div class="stage-name">Young Tree 若</div>
+                    <div class="stage-points">400 pts</div>
+                </div>
+                
+                <div class="stage">
+                    <div class="stage-icon">🌳</div>
+                    <div class="stage-name">Blooming 咲</div>
+                    <div class="stage-points">600 pts</div>
+                </div>
+                
+                <div class="stage">
+                    <div class="stage-icon">🌸</div>
+                    <div class="stage-name">Radiant Blossom 花</div>
+                    <div class="stage-points">800 pts</div>
+                </div>
+                
+                <div class="stage">
+                    <div class="stage-icon">🌲</div>
+                    <div class="stage-name">Mythical Tree 莆</div>
+                    <div class="stage-points">1200 pts</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Project Structure</h2>
+            <div class="section-intro">
+                <p>The SEED Garden is organized with a dedicated leadership team to ensure effective coordination across different regions and activities. Each leader brings unique expertise and cultural perspective to help our garden flourish.</p>
+            </div>
+            
+            <div class="cards-container">
+                <div class="card">
+                    <h3>Team Structure</h3>
+                    <p>A dedicated leadership team guiding the SEED Garden community</p>
+                    
+                    <div class="team-structure">
+                        <div class="team-member">
+                            <div class="member-avatar">👨‍🌾</div>
+                            <div class="member-name">Alonso</div>
+                            <div class="member-role">Head Gardener</div>
+                        </div>
+                        
+                        <div class="team-member">
+                            <div class="member-avatar">🇨🇴</div>
+                            <div class="member-name">Ana Sofia</div>
+                            <div class="member-role">Colombia Leader</div>
+                        </div>
+                        
+                        <div class="team-member">
+                            <div class="member-avatar">🇦🇷</div>
+                            <div class="member-name">Lucia Bocalandro</div>
+                            <div class="member-role">Argentina Leader</div>
+                        </div>
+                        
+                        <div class="team-member">
+                            <div class="member-avatar">🇧🇷</div>
+                            <div class="member-name">Eduardo Viel</div>
+                            <div class="member-role">Brazil Leader</div>
+                        </div>
+                        
+                        <div class="team-member">
+                            <div class="member-avatar">🇯🇵</div>
+                            <div class="member-name">TBD</div>
+                            <div class="member-role">Japan Leader</div>
+                        </div>
+                        
+                        <div class="team-member">
+                            <div class="member-avatar">🌍</div>
+                            <div class="member-name">Camilo Rodriguez</div>
+                            <div class="member-role">Global Moderator</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3>Point-Earning Activities</h3>
+                    <p>Participants earn points through various engagement activities</p>
+                    
+                    <h4>Remote Activities</h4>
+                    <ul>
+                        <li><strong>Business Activities</strong> - Strategy development, market research</li>
+                        <li><strong>Promotion Activities</strong> - Social media content, blog posts</li>
+                        <li><strong>SEED Teams Support</strong> - Project feedback, advisory sessions</li>
+                        <li><strong>Mentoring Activities</strong> - Knowledge sharing, guidance sessions</li>
+                        <li><strong>Cultural Activities</strong> - Japanese cultural workshops</li>
+                        <li><strong>Fun Activities</strong> - Virtual social events, games</li>
+                    </ul>
+                    
+                    <h4>In-Person Activities</h4>
+                    <ul>
+                        <li><strong>Networking Activities</strong> - Regional gatherings, professional events</li>
+                        <li><strong>Cultural Activities</strong> - Japanese cultural immersion events</li>
+                        <li><strong>Business Activities</strong> - Workshops, panels, discussions</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h3>Japanese Alumni Integration</h3>
+                    <p>Special roles for Japanese alumni as cultural bridges</p>
+                    <ul>
+                        <li>Facilitating communication between teams and producers through translation</li>
+                        <li>Leading cultural workshops and providing authentic Japanese perspectives</li>
+                        <li>Maintaining connections with Yamanashi producers and providing local updates</li>
+                        <li>Supporting current participants with practical knowledge of Japanese business culture</li>
+                        <li>Assisting with logistics and cultural preparation for the Study Tour</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Events Calendar 2025</h2>
+            <div class="section-intro">
+                <p>Our calendar features a variety of engaging activities throughout the year to build connections, share knowledge, and support SEED 2025 participants. Each event provides points that contribute to your growth in the SEED Garden.</p>
+                
+                <p>We've designed a balanced mix of remote and in-person activities to accommodate different schedules and locations. The mandatory Welcome Ceremony on July 10th will officially launch the program, while subsequent events will focus on specific skills, cultural exchange, and project support.</p>
+                
+                <p>Mark these dates in your calendar and plan to participate in as many events as possible to maximize your growth and contribution to the community!</p>
+            </div>
+            
+            <div class="legend">
+                <div class="legend-item">
+                    <div class="event-dot" style="background-color: #2196F3;"></div>
+                    <span>In-Person Activities</span>
+                </div>
+                <div class="legend-item">
+                    <div class="event-dot" style="background-color: #9C27B0;"></div>
+                    <span>Remote Activities</span>
+                </div>
+            </div>
+            
+            <div class="calendar">
+                <div class="month">
+                    <div class="month-header">June 2025</div>
+                    <div class="events">
+                        <div class="event event-virtual">
+                            <div class="event-dot"></div>
+                            <span>June 6: Checking the SEED Intranet Tutorial (20 pts)</span>
+                        </div>
+                        <div class="event event-virtual">
+                            <div class="event-dot"></div>
+                            <span>June 7: SEED 2025 Self-Introduction in Intranet Forums (30 pts)</span>
+                        </div>
+                        <div class="event event-virtual">
+                            <div class="event-dot"></div>
+                            <span>June 11: SEED 2025 and Alumni comment the forums (40 pts)</span>
+                        </div>
+                        <div class="event event-inperson">
+                            <div class="event-dot"></div>
+                            <span>June 28: In person SEED Alumni Meeting with 2025 Participants (100 pts)</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="month">
+                    <div class="month-header">July 2025</div>
+                    <div class="events">
+                        <div class="event event-cultural">
+                            <div class="event-dot"></div>
+                            <span>Jul 10: SEED 2025 Welcome Ceremony (120 pts)</span>
+                        </div>
+                        <div class="event event-virtual">
+                            <div class="event-dot"></div>
+                            <span>Jul 24: Fun Activity - My Favorite Japan Memory (60 pts)</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="month">
+                    <div class="month-header">August 2025</div>
+                    <div class="events">
+                        <div class="event event-virtual">
+                            <div class="event-dot"></div>
+                            <span>August 7: Producer Mentoring Session - Sake/Wine (80 pts)</span>
+                        </div>
+                        <div class="event event-virtual">
+                            <div class="event-dot"></div>
+                            <span>Aug 20: Survey & Interview Techniques Workshop (80 pts)</span>
+                        </div>
+                        <div class="event event-inperson">
+                            <div class="event-dot"></div>
+                            <span>Aug 28: Buenos Aires - Japanese Garden Visit (100 pts)</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="month">
+                    <div class="month-header">September 2025</div>
+                    <div class="events">
+                        <div class="event event-virtual">
+                            <div class="event-dot"></div>
+                            <span>Sep 4: Japanese Marketing Strategies Workshop (80 pts)</span>
+                        </div>
+                        <div class="event event-virtual">
+                            <div class="event-dot"></div>
+                            <span>Sep 18: Fun Activity - Virtual Japanese Cooking Class (60 pts)</span>
+                        </div>
+                        <div class="event event-virtual">
+                            <div class="event-dot"></div>
+                            <span>Sep 25: Presentation Skills Coaching Session (80 pts)</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="month">
+                    <div class="month-header">October 2025</div>
+                    <div class="events">
+                        <div class="event event-virtual">
+                            <div class="event-dot"></div>
+                            <span>Oct 4: Project Progress Review Session (100 pts)</span>
+                        </div>
+                        <div class="event event-inperson">
+                            <div class="event-dot"></div>
+                            <span>Oct 15: São Paulo - Japanese Neighborhood Dinner (100 pts)</span>
+                        </div>
+                        <div class="event event-virtual">
+                            <div class="event-dot"></div>
+                            <span>Oct 9: Research Progress Feedback Session (100 pts)</span>
+                        </div>
+                        <div class="event event-virtual">
+                            <div class="event-dot"></div>
+                            <span>Oct 23: Fun Activity - Japan Trivia Competition (60 pts)</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="month">
+                    <div class="month-header">November 2025</div>
+                    <div class="events">
+                        <div class="event event-virtual">
+                            <div class="event-dot"></div>
+                            <span>Nov 13: Final Presentation Feedback Session (120 pts)</span>
+                        </div>
+                        <div class="event event-virtual">
+                            <div class="event-dot"></div>
+                            <span>Nov 20: Pre-Trip Survival Guide & Tips Session (100 pts)</span>
+                        </div>
+                        <div class="event event-virtual">
+                            <div class="event-dot"></div>
+                            <span>Nov 27: Fun Activity - Share Your Expectations (60 pts)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            
+        <div class="section">
+            <h2>Rewards System</h2>
+            <div class="section-intro">
+                <p>The SEED Garden features a comprehensive rewards system that recognizes and celebrates your engagement and contributions. As you progress through growth stages, you'll unlock increasingly valuable rewards.</p>
+                
+                <p>There are separate reward tracks for current participants (who will receive their rewards during the Study Tour in Japan) and alumni (who will receive rewards during Goro Mutsuura's visits to their countries or through international shipping).</p>
+                
+                <p>The most exclusive rewards are reserved for those who reach the highest levels, creating healthy competition while ensuring everyone can achieve meaningful recognition for their participation.</p>
+            </div>
+            
+            <table class="rewards-table">
+                <thead>
+                    <tr>
+                        <th>Growth Stage</th>
+                        <th>Points</th>
+                        <th>Current Participants</th>
+                        <th>Alumni Participants</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>🌱 Seed 種</td>
+                        <td>0</td>
+                        <td>Digital welcome card</td>
+                        <td>Digital welcome card</td>
+                    </tr>
+                    <tr>
+                        <td>🌿 Sprout 芽</td>
+                        <td>50</td>
+                        <td>Certificate of Contribution</td>
+                        <td>Certificate of Contribution</td>
+                    </tr>
+                    <tr>
+                        <td>🍃 Sapling 苗</td>
+                        <td>250</td>
+                        <td>Special recognition</td>
+                        <td>Japanese snack gift from Yamanashi</td>
+                    </tr>
+                    <tr>
+                        <td>🌴 Young Tree 若</td>
+                        <td>400</td>
+                        <td>Special recognition</td>
+                        <td>Special souvenir set from Japan (Top 7)</td>
+                    </tr>
+                    <tr>
+                        <td>🌳 Blooming 咲</td>
+                        <td>600</td>
+                        <td>TeamLabs Tokyo ticket (Top 2)</td>
+                        <td>Japanese food cooking set (Top 1 per city)</td>
+                    </tr>
+                    <tr>
+                        <td>🌸 Radiant Blossom 花</td>
+                        <td>800</td>
+                        <td>Special dinner in Tokyo (Top 2)</td>
+                        <td>Dinner with Goro + souvenir set (Top 1 per city)</td>
+                    </tr>
+                    <tr>
+                        <td>🌲 Mythical Tree 莆</td>
+                        <td>1200</td>
+                        <td>Yamanashi premium gift set with sake, wine and souvenirs (Top 1)</td>
+                        <td>Yamanashi premium gift set with sake, wine and souvenirs (Top 1)</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="budget-container">
+                <div class="budget-card">
+                    <h3>Current Participants</h3>
+                    <div class="budget-amount">190</div>
+                    <div class="budget-description">Total value of rewards for SEED 2025 participants</div>
+                </div>
+                
+                <div class="budget-card">
+                    <h3>Alumni</h3>
+                    <div class="budget-amount">260</div>
+                    <div class="budget-description">Total value of rewards for 2022-2024 alumni</div>
+                </div>
+                
+                <div class="budget-card">
+                    <h3>Total Value</h3>
+                    <div class="budget-amount">450</div>
+                    <div class="budget-description">Combined value of all rewards</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Implementation Timeline</h2>
+            <div class="section-intro">
+                <p>The SEED Garden will be implemented in phases throughout 2025, with careful preparation beforehand to ensure a smooth and engaging experience for all participants. Below is our planned timeline from development through completion.</p>
+            </div>
+            
+            <div class="cards-container">
+                <div class="card">
+                    <h3>April-May 2025</h3>
+                    <ul>
+                        <li>Finalize leadership team</li>
+                        <li>Develop Intranet improvements</li>
+                        <li>Create communication materials</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h3>June 2025</h3>
+                    <ul>
+                        <li>Host Garden Awakening kickoff</li>
+                        <li>Assign Garden Plots</li>
+                        <li>Launch Growth Points system</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h3>July-November 2025</h3>
+                    <ul>
+                        <li>Regular event calendar</li>
+                        <li>Track engagement and points</li>
+                        <li>Complete team missions</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h3>December 2025</h3>
+                    <ul>
+                        <li>Award ceremony during Study Tour</li>
+                        <li>Year-end celebration</li>
+                        <li>Planning for 2026</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>How to Participate</h2>
+            <div class="section-intro">
+                <p>Participating in the SEED Garden is easy and rewarding! Here's how to get started and make the most of this unique community:</p>
+                
+                <ol>
+                    <li><strong>Register on the SEED Intranet:</strong> Ensure your profile is complete and up-to-date</li>
+                    <li><strong>Attend the Welcome Ceremony:</strong> Join us on July 10th for the official launch</li>
+                    <li><strong>Participate in Activities:</strong> Check the calendar regularly and join events that match your schedule</li>
+                    <li><strong>Contribute Your Expertise:</strong> Share your knowledge with current participants through mentoring sessions</li>
+                    <li><strong>Track Your Progress:</strong> Monitor your growth stage and points on the SEED Intranet</li>
+                    <li><strong>Connect with Others:</strong> Build relationships with alumni and current participants from different countries</li>
+                    <li><strong>Give Feedback:</strong> Help us improve by sharing your thoughts on activities and the overall program</li>
+                </ol>
+                
+                <p>Remember that your participation not only helps you earn rewards but also creates tremendous value for current SEED participants who benefit from your experience and insights. Together, we can create a vibrant, supportive community that extends far beyond the formal SEED Program timeline.</p>
+                
+                <p>If you have any questions about the SEED Garden or how to get involved, please contact Alonso Hernandez, who serves as the Head Gardener and overall coordinator for this initiative.</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Contact Information</h2>
+            <div class="section-intro">
+                <p>For any questions, suggestions, or concerns about the SEED Garden project, please don't hesitate to reach out to our team:</p>
+                
+                <ul>
+                    <li><strong>Alonso Hernandez (Head Gardener):</strong> Available through the SEED Intranet or WhatsApp</li>
+                    <li><strong>Regional Leaders:</strong> Contact your country's leader for local activities and support</li>
+                    <li><strong>GOROM Association:</strong> For general inquiries about the SEED Program</li>
+                </ul>
+                
+                <p>We're excited to embark on this journey with you and look forward to watching our garden grow throughout 2025!</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
