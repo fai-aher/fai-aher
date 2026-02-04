@@ -16,11 +16,19 @@
   <a href="https://ahernandezt.com">
     <img src="https://img.shields.io/badge/Portfolio-ahernandezt.com-blue?style=for-the-badge&logo=google-chrome&logoColor=white" alt="Portfolio"/>
   </a>
+  &nbsp;&nbsp;&nbsp;
   <a href="https://www.linkedin.com/in/a-hernandezt/">
     <img src="https://img.shields.io/badge/LinkedIn-Connect-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/>
   </a>
+</p>
+
+<p align="center">
   <a href="mailto:fai@ahernandezt.com">
     <img src="https://img.shields.io/badge/Email-fai@ahernandezt.com-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"/>
+  </a>
+  &nbsp;&nbsp;&nbsp;
+  <a href="mailto:fai.ahertz@gmail.com">
+    <img src="https://img.shields.io/badge/Email-fai.ahertz@gmail.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Email Alt"/>
   </a>
 </p>
 
@@ -29,8 +37,16 @@
 ## 📊 GitHub Stats
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=fai-aher&show_icons=true&theme=algolia&hide_border=true&count_private=true" alt="GitHub Stats" height="170"/>
-  <img src="https://github-readme-stats.vercel.app/api/top-langs?username=fai-aher&layout=compact&theme=algolia&hide_border=true&langs_count=8&card_width=320" alt="Top Languages" height="170"/>
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=fai-aher&theme=algolia&hide_border=true" alt="GitHub Streak" />
+</p>
+
+<p align="center">
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=fai-aher&theme=algolia" alt="Profile Summary"/>
+</p>
+
+<p align="center">
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=fai-aher&theme=algolia" alt="Repos per Language" height="180"/>
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=fai-aher&theme=algolia" alt="Most Commit Language" height="180"/>
 </p>
 
 ---
