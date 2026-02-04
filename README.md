@@ -2,7 +2,7 @@
   
 # Hey there, I'm Fai 👋
 
-### Software & Computer Engineering Student
+### Software & Computer Engineer | Social Robotics Researcher
 **Universidad de los Andes** | Bogotá, Colombia 🇨🇴
 
 おはよう！ファイです 🎌  
